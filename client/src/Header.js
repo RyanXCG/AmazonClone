@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
@@ -10,10 +10,14 @@ function Header() {
   const history = useHistory();
   const [{ basket, user }, dispatch] = useStateValue();
 
+  useEffect(() => {
+    console.log("Header user useEffect", user);
+  }, [user]);
+
   const handleAuthentication = () => {
     if (user) {
       auth.signOut();
-      window.location.reload(false);
+      //window.location.reload(false);
     }
   };
 
